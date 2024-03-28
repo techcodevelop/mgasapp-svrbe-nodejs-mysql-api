@@ -13,4 +13,4 @@ export const pool = createPool({
   database: DB_DATABASE,
 });
 
-console.log('que esta pasando'+DB_HOST)
+console.log('declarando cadena de conexion'+DB_HOST)

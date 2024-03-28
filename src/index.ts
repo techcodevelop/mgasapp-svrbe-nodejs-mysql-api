@@ -1,7 +1,13 @@
 
-import app from "./server"
-import { PORT } from "./config";
+import Server from "./server"
+import dotenv from 'dotenv'
 
-app.listen(PORT)
 
-console.log("server running on port: a", PORT);
+dotenv.config()
+//server.listen(PORT)
+
+const server = new Server()
+
+
+
+
