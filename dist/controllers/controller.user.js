@@ -9,11 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.newUser = void 0;
+exports.newUser = exports.getUsers = void 0;
 const connection_1 = require("../db/connection");
-//import bcrypt from 'bcrypt'
-//import { User } from '../models/user'
-//import jwt from 'jsonwebtoken'
+const getUsers = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const [rows] = yield connection_1.pool.query("select * from users");
+        resp.json(rows);
+    }
+    catch (error) {
+        return resp.status(500).json({
+            message: "Something goes wrong",
+        });
+    }
+});
+exports.getUsers = getUsers;
 const newUser = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("entro al newuser");
     const { username, password } = req.body;
@@ -27,7 +36,5 @@ const newUser = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
     }
     //guardamos usuarios en la bd
     const [rows] = yield connection_1.pool.query("insert into users (name, salary) values (?, ?)", [username, password]);
-    //const [rows] = await pool.query("select * from users where username=?", [username]);
-    //const user = await User.findOne({ where: { username: username } })
 });
 exports.newUser = newUser;

@@ -2,9 +2,22 @@ import { Request, Response } from 'express'
 
 import { pool } from "../db/connection"
 
-//import bcrypt from 'bcrypt'
-//import { User } from '../models/user'
-//import jwt from 'jsonwebtoken'
+
+
+
+export const getUsers = async (req: Request, resp: Response) => {
+    try {
+
+      const [rows] = await pool.query("select * from users");
+      resp.json(rows);
+
+    } catch (error) {
+      return resp.status(500).json({
+        message: "Something goes wrong",
+      });
+    }
+  };
+  
 
 export const newUser = async (req: Request, resp: Response) => {
 
@@ -23,14 +36,6 @@ export const newUser = async (req: Request, resp: Response) => {
         "insert into users (name, salary) values (?, ?)",
         [username, password]
       );
-
-    
-
-
-
-    //const [rows] = await pool.query("select * from users where username=?", [username]);
-
-    //const user = await User.findOne({ where: { username: username } })
 
 
 
