@@ -36,6 +36,9 @@ const newUser = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
     //guardamos usuarios en la bd
-    const [rows] = yield connection_1.pool.query("insert into users (name, salary) values (?, ?)", [username, password]);
+    //   const [rows] = await pool.query(
+    //     "insert into users (name, salary) values (?, ?)",
+    //   [username, password]
+    // );
 });
 exports.newUser = newUser;

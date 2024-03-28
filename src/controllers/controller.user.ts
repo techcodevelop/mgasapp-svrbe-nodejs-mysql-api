@@ -27,12 +27,8 @@ export const newUser = async (req: Request, resp: Response) => {
         })
     }
  //guardamos usuarios en la bd
-    const [rows] = await pool.query(
-        "insert into users (name, salary) values (?, ?)",
-        [username, password]
-      );
-
-
-
-
+ //   const [rows] = await pool.query(
+   //     "insert into users (name, salary) values (?, ?)",
+     //   [username, password]
+     // );
 }
