@@ -1,5 +1,5 @@
 
-import {pool} from "./connect"
+import pool from "./db/connect"
 import { Request, Response } from 'express'
 import { Router } from "express";
 

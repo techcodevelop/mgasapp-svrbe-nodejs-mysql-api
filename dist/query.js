@@ -8,11 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const connect_1 = require("./connect");
+const connect_1 = __importDefault(require("./db/connect"));
 const express_1 = require("express");
 const ping = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const [result] = yield connect_1.pool.query("select 1+3 as result");
+    const [result] = yield connect_1.default.query("select 1+3 as result");
     res.json('PONG');
     // res.json(result[0]);
     console.log(result[0]);

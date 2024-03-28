@@ -1,6 +1,6 @@
 import express from "express";
 import index from "./query"
-import { Request, Response } from 'express'
+
 
 const app = express();
 
