@@ -6,6 +6,7 @@ import { pool } from "../db/connection"
 
 
 export const getUsers = async (req: Request, resp: Response) => {
+    console.log("entro al getusers")
     try {
 
       const [rows] = await pool.query("select * from users");

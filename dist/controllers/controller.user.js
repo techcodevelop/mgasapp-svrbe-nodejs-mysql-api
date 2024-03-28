@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.newUser = exports.getUsers = void 0;
 const connection_1 = require("../db/connection");
 const getUsers = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("entro al getusers");
     try {
         const [rows] = yield connection_1.pool.query("select * from users");
         resp.json(rows);
