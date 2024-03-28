@@ -1,26 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const sequelize_1 = require("sequelize");
+exports.pool = void 0;
+const promise_1 = require("mysql2/promise");
 const config_1 = require("../config");
-const pool = new sequelize_1.Sequelize(config_1.DB_DATABASE, config_1.DB_USER, config_1.DB_PASSWORD, {
+exports.pool = (0, promise_1.createPool)({
     host: config_1.DB_HOST,
-    dialect: 'mysql'
+    user: config_1.DB_USER,
+    password: config_1.DB_PASSWORD,
+    port: config_1.DB_PORT,
+    database: config_1.DB_DATABASE,
 });
-exports.default = pool;
-/*
-import { createPool } from "mysql2/promise";
-import {
-DB_DATABASE, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER
-
-} from "../config"
-
-export const pool = createPool({
-  host: DB_HOST,
-  user: DB_USER,
-  password: DB_PASSWORD,
-  port: DB_PORT,
-  database: DB_DATABASE,
-});
-
-console.log('que esta pasando'+DB_HOST)
-*/
+console.log('que esta pasando' + config_1.DB_HOST);
