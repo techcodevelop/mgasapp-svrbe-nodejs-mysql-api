@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 import { PORT } from "./config";
 import routesUser from './routes/route.user'
-import index from "./query"
+
 
 class Server {
 
@@ -35,8 +35,7 @@ class Server {
     }
 
     async dbConnect(){
-        try{
-     
+        try{     
             console.log('Connection has been established successfully.')
         }catch(error){
             console.error('Unable to conneect to the database:', error)

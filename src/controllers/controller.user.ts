@@ -12,8 +12,7 @@ export const getUsers = async (req: Request, resp: Response) => {
         message: "Something goes wrong",
       });
     }
-  };
-  
+  };  
 
 export const newUser = async (req: Request, resp: Response) => {
 
