@@ -1,11 +1,11 @@
 import express, { Application } from "express";
-import { PORT } from "./config";
 import routesUser from './routes/route.user'
-
+import { PORT } from "./config";
 
 class Server {
 
     private app: Application
+
     //La interfaz Application representa una aplicación Express. 
     //Puedes usar esta interfaz para configurar y ejecutar tu aplicación Express, 
     //así como para acceder a todas las funcionalidades proporcionadas por Express.
@@ -23,17 +23,17 @@ class Server {
         })
     }
 
-    midlewares(){
-        //Este middleware se utiliza para analizar el cuerpo de las solicitudes entrantes con el formato JSON. 
-        //Cuando tu servidor Express recibe una solicitud con el encabezado 
-        this.app.use(express.json())
-    }
-
     routes(){
         //this.app.use('/api/products', routesProduct)
         this.app.use('/api/users', routesUser)
     }
 
+    midlewares(){
+        //Este middleware se utiliza para analizar el cuerpo de las solicitudes entrantes con el formato JSON. 
+        //Cuando tu servidor Express recibe una solicitud con el encabezado 
+        this.app.use(express.json())
+    }
+    
     async dbConnect(){
         try{     
             console.log('Connection has been established successfully.')
