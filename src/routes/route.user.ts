@@ -4,7 +4,7 @@ import {newUser, getUsers} from '../controllers/controller.user'
 
 const router = Router();
 
-router.post("/", getUsers);
+router.get("/", getUsers);
 router.post("/new", newUser);
 
 
