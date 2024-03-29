@@ -28,12 +28,21 @@ const newUser = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("entro al newuser");
     const { username, password } = req.body;
     // Validamos si el usuario ya existe en la bd
-    const [user] = yield connection_1.pool.query("select * from users where username=?", [username]);
-    console.log(user);
-    if (user) {
+    const rows = yield connection_1.pool.query("select username from users where username=?", [username]);
+    console.log(rows[0].length);
+    console.log(rows[0]);
+    //console.log([rows])
+    if (rows[0].length <= 0) {
+        const [rows] = yield connection_1.pool.query("insert into users (username, password) values (?, ?)", [username, password]);
+        resp.json({
+            msg: `Usuario ${username} created successfully`
+        });
+    }
+    else {
         return resp.status(400).json({
             msg: `Ya existe un usuario con el nombre ${username}`
         });
+        console.log("se registro en la base de datos");
     }
     //guardamos usuarios en la bd
     //   const [rows] = await pool.query(
