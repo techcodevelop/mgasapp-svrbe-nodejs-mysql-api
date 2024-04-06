@@ -11,41 +11,44 @@ class Server {
     //Puedes usar esta interfaz para configurar y ejecutar tu aplicación Express, 
     //así como para acceder a todas las funcionalidades proporcionadas por Express.
     constructor() {
-        this.app=express()
+        this.app = express()
         this.listen()
         this.midlewares()
         this.routes()
         this.dbConnect()
     }
 
-    listen(){  // Inicia el servidor
-        this.app.listen(PORT,()=>{
-            console.log('Aplication corriendo en el puerto '+ PORT)
+    listen() {  // Inicia el servidor
+        this.app.listen(PORT, () => {
+            console.log('Aplication corriendo en el puerto ' + PORT)
         })
     }
 
-    routes(){
+    routes() {
         //this.app.use('/api/products', routesProduct)
         this.app.use('/api/users', routesUser)
     }
 
-    midlewares(){
+    midlewares() {
         //Este middleware se utiliza para analizar el cuerpo de las solicitudes entrantes con el formato JSON. 
         //Cuando tu servidor Express recibe una solicitud con el encabezado 
         this.app.use(express.json());
 
-       console.log( this.app.use(cors()));
-//
-      
+        this.app.use(cors({
+
+            origin: 'http://localhost:4200'
+        }));
+        //
+
     }
-    
-    async dbConnect(){
-        try{     
+
+    async dbConnect() {
+        try {
             console.log('Connection has been established successfully.')
-        }catch(error){
+        } catch (error) {
             console.error('Unable to conneect to the database:', error)
         }
-    } 
+    }
 }
 export default Server;
 
