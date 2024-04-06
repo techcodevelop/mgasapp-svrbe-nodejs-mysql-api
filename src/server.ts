@@ -32,9 +32,9 @@ class Server {
     midlewares(){
         //Este middleware se utiliza para analizar el cuerpo de las solicitudes entrantes con el formato JSON. 
         //Cuando tu servidor Express recibe una solicitud con el encabezado 
-        this.app.use(express.json())
+        this.app.use(express.json());
 
-        this.app.use(cors())
+        this.app.use(cors());
     }
     
     async dbConnect(){
