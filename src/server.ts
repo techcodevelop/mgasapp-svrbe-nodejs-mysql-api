@@ -34,7 +34,9 @@ class Server {
         //Cuando tu servidor Express recibe una solicitud con el encabezado 
         this.app.use(express.json());
 
-        this.app.use(cors());
+       console.log( this.app.use(cors()));
+//
+      
     }
     
     async dbConnect(){
