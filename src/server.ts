@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from 'cors'
 import routesUser from './routes/route.user'
+import routesProduct from './routes/route.product'
 import { PORT } from "./config";
 
 class Server {
@@ -27,6 +28,7 @@ class Server {
     routes() {
         //this.app.use('/api/products', routesProduct)
         this.app.use('/api/users', routesUser)
+        this.app.use('/api/products', routesProduct)
     }
 
     midlewares() {
@@ -34,10 +36,9 @@ class Server {
         //Cuando tu servidor Express recibe una solicitud con el encabezado 
         this.app.use(express.json());
 
-        this.app.use(cors({
-
-            origin: 'http://localhost:4200'
-        }));
+        this.app.use(cors(
+           // {         origin: 'http://localhost:4200' }
+            ));
         //
 
     }

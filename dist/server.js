@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const route_user_1 = __importDefault(require("./routes/route.user"));
+const route_product_1 = __importDefault(require("./routes/route.product"));
 const config_1 = require("./config");
 class Server {
     //La interfaz Application representa una aplicación Express. 
@@ -35,14 +36,15 @@ class Server {
     routes() {
         //this.app.use('/api/products', routesProduct)
         this.app.use('/api/users', route_user_1.default);
+        this.app.use('/api/products', route_product_1.default);
     }
     midlewares() {
         //Este middleware se utiliza para analizar el cuerpo de las solicitudes entrantes con el formato JSON. 
         //Cuando tu servidor Express recibe una solicitud con el encabezado 
         this.app.use(express_1.default.json());
-        this.app.use((0, cors_1.default)({
-            origin: 'http://localhost:4200'
-        }));
+        this.app.use((0, cors_1.default)(
+        // {         origin: 'http://localhost:4200' }
+        ));
         //
     }
     dbConnect() {
